@@ -6,16 +6,14 @@ load_dotenv()
 class Config:
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     
-    # ✅ UPDATED: Use production-ready model (replaces deprecated llama3-70b-8192)
-    MODEL_NAME = "llama-3.3-70b-versatile"  # Best for coding tasks
-    
-    # Alternative models you can swap in:
-    # MODEL_NAME = "llama-3.1-8b-instant"      # Faster, cheaper option
-    # MODEL_NAME = "openai/gpt-oss-120b"       # For complex reasoning
+    # ✅ DEFAULT MODEL (Fast - 8B parameters)
+    # Change this to "llama-3.3-70b-versatile" for smarter but slower responses
+    MODEL_NAME = "llama-3.1-8b-instant"
     
     TEMPERATURE = 0.2
-    MAX_TOKENS = 4096
+    MAX_TOKENS = 2048
     SAVE_DIR = "generated_code"
     
+    # Ensure save directory exists
     if not os.path.exists(SAVE_DIR):
         os.makedirs(SAVE_DIR)
